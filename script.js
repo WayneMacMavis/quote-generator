@@ -8,11 +8,16 @@ const newQuoteBtn = document.getElementById('new-quote');
 async function getQuote() {
     const proxyUrl = 'http://cors-anywhere.herokuapp.com/';
     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    // If author is blank add unknown
     try {
     const response = await fetch(proxyUrl + apiUrl);
     const data = await response.json();
+    if (data.quoteAuthor = '') {
         authorText.innerText = data.quoteAuthor;
-    } catch(error) {
+    } else {
+        quoteText.innerText = data.quoteText;
+    }
+} catch(error) {
         getQuote();
         
     }
