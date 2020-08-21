@@ -5,12 +5,12 @@ const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
-function showLoadingSpinner() {
-    loader.hidden = false;
+function showLoading() {
+   if(loader.hidden = false);
     quoteContainer.hidden = true;
 }
 
-function hideLoadingSpinner() {
+function hideLoading() {
     if(!loader.hidden) {
     quoteContainer.hidden = false;
     loader.hidden = true;
@@ -18,7 +18,7 @@ function hideLoadingSpinner() {
 }
 
 async function getQuoteApi() {
-    showLoadingSpinner();
+    showLoading();
     const proxyUrl = 'https://sheltered-peak-46520.herokuapp.com/';
     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
     // If author is blank, add unknown
@@ -37,7 +37,7 @@ async function getQuoteApi() {
         quoteText.classList.remove('long-quote');
     }
     quoteText.innerText = data.quoteText;
-    hideLoadingSpinner();
+    hideLoading();
 } catch(error) {
         getQuoteApi();
         
